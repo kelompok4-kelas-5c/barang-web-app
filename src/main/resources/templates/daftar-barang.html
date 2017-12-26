@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Aplikasi Perekaman Data Barang</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h1 align="center">Aplikasi Perekaman Data Barang</h1>
+        <h2 align="center">Daftar Data Barang</h2>
+        
+        <table border="1" align="center">
+            <thead>
+                <tr>
+                    <td>ID</td>
+                    <td>JENIS</td>
+                    <td>NAMA BARANG</td>
+                    <td>OPSI</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="brg : ${daftarBarang}">
+                    <td th:text="${brg.id}"></td>
+                    <td th:text="${brg.jenis}"></td>
+                    <td th:text="${brg.nama_barang}"></td>
+                    <td> <a th:href="@{/edit-data(id=${brg.id})}">Ubah</a> | 
+                    <a th:href="@{/delete(id=${brg.id})}">Hapus</a></td>
+                    
+                </tr>
+
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td><a href="/tambah-data">Tambah Data</a></td>
+                </tr>
+            </tfoot>
+
+        </table>
+    </body>
+</html>
